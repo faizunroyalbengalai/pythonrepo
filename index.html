@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>python</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #238636, #2ea043);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2rem;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff, #58a6ff);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .project-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #8b949e;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-name {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff);
+      border-radius: 2px;
+      margin: 0 auto 2rem;
+    }
+
+    .repo-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .repo-section:hover {
+      border-color: #58a6ff;
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+    }
+
+    .repo-icon {
+      flex-shrink: 0;
+      color: #8b949e;
+    }
+
+    .repo-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+
+    .repo-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #8b949e;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .repo-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #58a6ff;
+      letter-spacing: 0.01em;
+    }
+
+    .stats {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #e6edf3;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: #8b949e;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #238636;
+      display: inline-block;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    footer {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 0.82rem;
+      color: #8b949e;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-text span {
+      color: #bc8cff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .project-name {
+        font-size: 2.2rem;
+      }
+      .card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="badge">&#x2022; Active Project</div>
+
+    <div class="card">
+
+      <p class="project-label">Project</p>
+      <h1 class="project-name">python</h1>
+
+      <div class="divider"></div>
+
+      <div class="repo-section">
+        <svg class="repo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61
+            c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77
+            5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0
+            0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77
+            a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7
+            A3.37 3.37 0 0 0 9 18.13V22"
+            stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="repo-info">
+          <span class="repo-label">Repository</span>
+          <span class="repo-name">pythonrepo</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-value">
+            <span class="stat-dot"></span>Open
+          </span>
+          <span class="stat-label">Status</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">v1.0</span>
+          <span class="stat-label">Version</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">Public</span>
+          <span class="stat-label">Access</span>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p class="footer-text">Developed by <span>Royal Bengal AI</span></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
